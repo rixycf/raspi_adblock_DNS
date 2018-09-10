@@ -1,0 +1,1 @@
+/Users/riki/Documents/study_shellscript/shell_okiba/raspi_setting.sh
