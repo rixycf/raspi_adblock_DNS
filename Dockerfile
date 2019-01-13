@@ -1,12 +1,11 @@
 # @rixycf dnsmasq container for adblock
 
-FROM resin/rpi-raspbian:jessie
+FROM alpine:3.6
 
 LABEL maintainer="rixycf kasnake1013@gmail.com"
 
-RUN apt update && \
-    apt install dnsmasq && \
-    curl -sSL "https://warui.intaa.net/adhosts/hosts.txt" | \
+RUN apk add --no-cache dnsmasq curl && \
+    curl -sL "https://warui.intaa.net/adhosts/hosts.txt" | \
     awk 'NR > 1 {print "address=/"$2"/"$1}' >> /etc/dnsmasq.adblock.conf && \
     echo "domain-needed" >> /etc/dnsmasq.conf && \
     echo "bogus-priv" >> /etc/dnsmasq.conf && \
