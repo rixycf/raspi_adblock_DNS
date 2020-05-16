@@ -1,12 +1,12 @@
 # @rixycf dnsmasq container for adblock
 
-FROM alpine:3.6
+FROM arm32v6/alpine
 
 LABEL maintainer="rixycf kasnake1013@gmail.com"
 
 RUN apk add --no-cache dnsmasq curl && \
     curl -sL "https://warui.intaa.net/adhosts/hosts.txt" | \
-    awk 'NR > 1 {print "address=/"$2"/"$1}' >> /etc/dnsmasq.adblock.conf && \
+    awk 'NR > 1 && !/scdn.line-apps.com/ {print "address=/"$2"/"$1}' >> /etc/dnsmasq.adblock.conf && \
     echo "domain-needed" >> /etc/dnsmasq.conf && \
     echo "bogus-priv" >> /etc/dnsmasq.conf && \
     echo "no-resolv" >> /etc/dnsmasq.conf && \
