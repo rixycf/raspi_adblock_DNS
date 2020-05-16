@@ -1,5 +1,5 @@
 FROM alpine:3.6
-COPY ./whitelist.txt /tmp/
+COPY whitelist.txt /tmp/
 RUN apk add --no-cache dnsmasq curl && \
     curl -sL "https://warui.intaa.net/adhosts/hosts.txt" | \
     awk 'NR > 1 {print "address=/"$2"/"$1}' | \
