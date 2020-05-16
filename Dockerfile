@@ -1,8 +1,4 @@
-# @rixycf dnsmasq container for adblock
-
-FROM arm32v6/alpine
-
-LABEL maintainer="rixycf kasnake1013@gmail.com"
+FROM alpine:3.6
 
 RUN apk add --no-cache dnsmasq curl && \
     curl -sL "https://warui.intaa.net/adhosts/hosts.txt" | \

@@ -32,6 +32,6 @@ dnsmasqが参照するファイルに [こちら](https://warui.intaa.net/adhost
 
 __Run container__  
 ```
-docker build -t hoge/dnsmasq_adblock_alpine:0.1:wq
+docker build -t hoge/dnsmasq_adblock_alpine:0.1 .
 docker container run --cap-add=NET_ADMIN -d -p 53:53/udp -p 53:53/tcp --name adblock_dns hoge/dnsmasq_adblock_alpine:0.1
 ```
